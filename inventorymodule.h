@@ -182,7 +182,7 @@ void sortByISBN () {
         Book[minIndex].getISBN = array[startScan].getISBN;
         array[startScan].getISBN = minValue;
     } 
-	int inventory::binarySearch(int  array[], int numElems, int value)
+	int inventory::binarySearch(int  inventory[], int numElems, string value)
 {
 	int first = 0,
 		last = numElems - 1, middle, position = -1;
@@ -190,21 +190,74 @@ void sortByISBN () {
 	while (!found&&first <= last)
 	{
 		middle = (first + last) / 2;
-			if (array[middle] == value)
+			if (inventory[middle] == value)
 			{
 				found = true;
 				position = middle;
 			}
-			else if (array[middle] > value)
+			else if (inventory[middle] > value)
 				last = middle - 1;
 			else first = middle + 1;
 	}
 	return position;
 }
-	void Lookupbook();
+	
+		void Lookupbook(string ISBNnum)
+	{
+		if (result != -1)
+		{
+			int result = binarySearch(bookObject, size, ISBNnum);
+	          cout << bookObject[result].getbookAuhtor() << endl;
+	               cout << bookObject[result].getISBN() << endl;
+	           cout << bookObject[result].getbookName() << endl;
+
+		}
+		else
+		{
+			cout << "Book not found\n";
+		}
+		
+		 
+
+	}
+	
+	
 	 void Addbook();
-	 void Deletebook();
-	 void EditBook();
+	 
+	 void Deletebook(string BookTitle)
+	{
+
+		int result = binarySearchbyName(bookObject, size, BookTitle);
+		if (result != -1)
+		{
+			for (int i = result; i < size - 1; ++i)
+			{
+				bookObject[i] = bookObject[i + 1];   //Moves the entire list up by one.
+			}
+			size = size - 1;
+		}
+		else
+		{
+			cout << "Book not found\n";
+		} 
+	 }
+	
+	
+	 
+             void  EditBook(string bookTitle, string newBookTitle)
+	{
+		int result = binarySearchbyName(bookObject, size, bookTitle);
+		if (result != -1)
+		{
+			bookObject[result].setTitle(newBookTitle);
+
+		}
+		else
+		{
+			cout << "Book not found\n";
+		}
+	     }	
+	
 
 };
 #endif
