@@ -335,8 +335,22 @@ public:
 		cout << "You have entered the Add Book function. However, there is nothing here yet. Redirecting...\n";
 	}
 	void deleteBook()
+	{void Deletebook(string BookTitle)
 	{
-		cout << "You have entered the Delete Book function. However, there is nothing here yet. Redirecting...\n";
+
+		int result = binarySearchbyName(bookObject, size, BookTitle);
+		if (result != -1)
+		{
+			for (int i = result; i < size-1 ; i++)
+			{
+				bookObject[i] = bookObject[i + 1];   //Moves the entire list up by one.
+			}
+			size = size - 1;
+		}
+		else
+		{
+			cout << "Book not found\n";
+		}
 	}
 	void editBook()
 	{
