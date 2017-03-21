@@ -336,11 +336,99 @@ public:
 	}
 	void deleteBook()
 	{
-		cout << "You have entered the Delete Book function. However, there is nothing here yet. Redirecting...\n";
+		void Deletebook(string BookTitle)
+	{
+
+		int result = binarySearchbyName(bookObject, size, BookTitle);
+		if (result != -1)
+		{
+			for (int i = result; i < size-1 ; i++)
+			{
+				bookObject[i] = bookObject[i + 1];   //Moves the entire list up by one.
+			}
+			size = size - 1;
+		}
+		else
+		{
+			cout << "Book not found\n";
+		}
+.\n";
 	}
 	void editBook()
 	{
-		cout << "You have entered the Edit Book function. However, there is nothing here yet. Redirecting...\n";
+		oid  EditBook(string bookTitle)
+	{
+		int result = binarySearchbyName(bookObject, size, bookTitle);
+		//if (result != -1)
+		
+			int entry;
+			
+			do
+			{
+				//int entry;
+				cout << "enter 1,2,3,4,5,6,7 for title,author, publisher,quantity, retailprice,wholesale,";
+				cin >> entry;
+				//cin.clear();
+				switch(entry)
+					
+				{
+					case 1:
+						string res;
+						cout << "title";
+						cin >> res;
+					     bookObject[result].setTitle(res);
+
+						//cout << bookObject[result].getbookName();
+						break;
+					case 2:
+						string author;
+						cout << "author ";
+						cin >> author;
+						bookObject[result].setAuthor(author);
+						break;
+					case 3:
+						string pub;
+						cout << "publisher";
+						cin >> pub;
+						bookObject[result].setPublisher(pub);
+					//case 4:
+					//	int quantity;
+						//cout << ""
+
+
+						//cout << "Please enter new Book Title\n";
+						//cin >> newBookTitle;
+
+						//cout << "You entered " << newBookTitle;
+
+
+
+
+		
+						break;
+					
+
+					default: cout << "Invalid menu choice. Please try again: ";
+				}
+
+			} while (entry != 3);
+
+			
+			
+			/*Menu options for what to change: title, author, quantity, etc
+			if they enter T: 
+			cin T;
+			book[i].setT);
+
+			etc
+				*/
+
+		
+		else
+		{
+			cout << "Book not found\n";
+		}
+		
 	}
 	void displayABook(int index)
 	{
